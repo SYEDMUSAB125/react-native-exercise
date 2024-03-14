@@ -6,112 +6,57 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React, { useState } from 'react';
+
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
+  
   Text,
-  useColorScheme,
   View,
+  Button,
+  StyleSheet,
+  TextInput
 } from 'react-native';
+// import CompanyData from './components/CompanyData';
+import styles from './style';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  const [name , setName]=useState("");
+ 
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+   
+    <View>
+      {/* <Text style={{fontSize:30}}>hello from react native</Text>
+      <Text style={{fontSize:20}}>this is my second text</Text>
+      <Text style={{fontSize:25}}> you can press below button </Text>
+      <Button title="Press Here"></Button>
+      <CompanyData/> */}
+    {/* <Text style={{fontSize:35}}> On Press Events with status </Text>
+    <Text style={{fontSize:35}}> {name} </Text>
+    <Button onPress={Data} title="Press Me for state update" color={"green"}></Button> */}
+    {/* <Text style= {styles.textbox}>{name}</Text>
+    <Button onPress={()=>{setName("Update in Card")}} title="press for update" ></Button> */}
+    <Text style={styles.textbox}>Your name is: {name} </Text>
+    <TextInput style={textStyle.textbox} onChangeText={(text)=>{setName(text)}} placeholder="Enter Your name" value={name}  />
+    <Button onPress={()=>{setName(" ")}} title="click for erase" ></Button>
     </View>
-  );
+  ); 
+    
+  
 };
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+const textStyle = StyleSheet.create({
+  textbox:{
+    fontSize:15,
+    color:"orange",
+    fontWeight:"bold",
+    textAlign:"center",
+    backgroundColor:"rgb(1,255,177)",
+    borderRadius:10,
+    marginTop:50,
+    marginBottom:10,
+    height:50,
+    paddingTop:20
+  }
 });
 
 export default App;
